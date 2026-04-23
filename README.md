@@ -140,8 +140,6 @@ With `--log-dir`, each session produces:
 - **`.log`** — Forensics block, `[DECODE_OUTPUT]` per success, `[OK]`/`[FAIL]` summaries, optional `[CRIB]`, `[PAYLOAD_CHECKSUM]`, `[WEB_SIEVE]`, `[SUMMARY]`.
 - **`.jsonl`** — Machine-readable lines (`session_start`, `forensics`, `decode_output`, `strategy_result`, `web_era_sieve`, etc.).
 
----
-
 
 ---
 
