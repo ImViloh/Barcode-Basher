@@ -142,9 +142,6 @@ With `--log-dir`, each session produces:
 
 ---
 
-## Discord blurb (copy-paste)
-
-A ready-to-post short description lives in **`DISCORD.md`** in this repo.
 
 ---
 
