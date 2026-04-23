@@ -1,0 +1,61 @@
+{
+  "name": "barcode-basher",
+  "version": "1.0.0",
+  "description": "Multi-engine 1D/QR decode (ZXing, javascript-barcode-reader, jsQR), Sharp preprocess matrix, exhaustive transform chains, PNG tEXt/zTXt forensics, crib scoring, session logs + web-era payload sieve",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "config": {
+    "bb_image": "samples/voyage-barcode.png",
+    "bb_log_dir": "logs",
+    "bb_crib": "YOUR CHARM",
+    "bb_no_crib": false
+  },
+  "scripts": {
+    "help": "node scripts/help.mjs",
+    "build": "tsc",
+    "build:clean": "node -e \"import('node:fs').then(({rmSync})=>{try{rmSync('dist',{recursive:true,force:true})}catch(e){};try{rmSync('.tsbuildinfo')}catch(e){}})\" && tsc",
+    "build:watch": "tsc --watch",
+    "clean": "node -e \"import('node:fs').then(({rmSync})=>{try{rmSync('dist',{recursive:true,force:true})}catch(e){};try{rmSync('.tsbuildinfo')}catch(e){};try{rmSync('logs',{recursive:true,force:true})}catch(e){}})\"",
+    "start": "node dist/index.js",
+    "run": "npm run build && node scripts/run-from-config.mjs",
+    "run:fast": "node scripts/run-from-config.mjs",
+    "run:config": "npm run run",
+    "run:config:fast": "npm run run:fast",
+    "analyze": "npm run build && node dist/index.js",
+    "analyze:fast": "node dist/index.js",
+    "analyze:plain": "npm run build && node dist/index.js --plain",
+    "analyze:plain:fast": "node dist/index.js --plain",
+    "analyze:sample": "npm run build && node dist/index.js samples/voyage-barcode.png",
+    "analyze:sample:fast": "node dist/index.js samples/voyage-barcode.png",
+    "analyze:logs": "npm run build && node dist/index.js samples/voyage-barcode.png --log-dir logs",
+    "analyze:logs:fast": "node dist/index.js samples/voyage-barcode.png --log-dir logs",
+    "analyze:full": "npm run build && node dist/index.js samples/voyage-barcode.png --log-dir logs --crib YOUR CHARM",
+    "analyze:full:fast": "node dist/index.js samples/voyage-barcode.png --log-dir logs --crib YOUR CHARM",
+    "analyze:no-crib": "npm run build && node dist/index.js samples/voyage-barcode.png --log-dir logs --no-crib",
+    "analyze:no-crib:fast": "node dist/index.js samples/voyage-barcode.png --log-dir logs --no-crib",
+    "decode": "npm run analyze",
+    "decode:fast": "npm run analyze:fast",
+    "decode:plain": "npm run analyze:plain",
+    "decode:plain:fast": "npm run analyze:plain:fast",
+    "decode:logs": "npm run analyze:logs",
+    "decode:logs:fast": "npm run analyze:logs:fast",
+    "decode:full": "npm run analyze:full",
+    "decode:full:fast": "npm run analyze:full:fast"
+  },
+  "dependencies": {
+    "@zxing/library": "^0.21.3",
+    "boxen": "^8.0.1",
+    "chalk": "^5.4.1",
+    "javascript-barcode-reader": "^1.0.0",
+    "jsqr": "^1.4.0",
+    "log-update": "^6.1.0",
+    "sharp": "^0.34.1",
+    "strip-ansi": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "typescript": "^5.8.3"
+  }
+}
